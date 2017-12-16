@@ -18,3 +18,5 @@ CSP Heartsync là chatbot giúp bạn có thể kết nối với mọi người
 [ ] Xử lí sau khi kết thúc
 
 -> Xử lí destroy session
+
+Công nghệ sử dụng: MongoDB, Express,...
