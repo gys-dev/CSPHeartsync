@@ -6,7 +6,7 @@ CSP Heartsync là chatbot giúp bạn có thể kết nối với mọi người
 
 [ ] Xử lí việc người dùng bắt đầu
 
--> Xử lí check user [ ]
+-> Xử lí check user [x]
 
 -> Xử lí lựa chọn giới tính [ ]
 
