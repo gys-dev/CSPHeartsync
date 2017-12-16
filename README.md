@@ -10,6 +10,8 @@ CSP Heartsync là chatbot giúp bạn có thể kết nối với mọi người
 
 -> Xử lí lựa chọn giới tính [ ]
 
+->Xử lí pair trai gái [ ]
+
 
 [ ] Xử lí trong khi nhắn tin
 
