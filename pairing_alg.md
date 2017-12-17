@@ -12,7 +12,8 @@
         * đặt B vào đầu db
 - lặp quá trình trên (n / 2)
 - điều kiện để 2 người hợp
-```bool check (B, C)
+```c++
+bool check (B, C)
 {
     if (B.fav != "none")
         if (B.fav != C.gender) return 0;
