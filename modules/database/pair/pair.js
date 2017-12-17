@@ -1,5 +1,6 @@
 var mongodb = require('mongodb').MongoClient,
-    url = 'mongodb://localhost:27017';
+    url = 'mongodb://localhost:27017',
+    sendMessage = require('../../api/facebookAPI/sendMessage');
 
 var pair = (senderId, gender, fav) => {
     if (fav != 'none') {
@@ -9,7 +10,7 @@ var pair = (senderId, gender, fav) => {
                 let collect = dbase.collection('pending');
                 collect.count({ gender: gender, favorite: fav }).then(count => {
                     if (count < 2) {
-                        return console.log("Oh noo =))) Không có user nào");
+                        return sendMessage.sendTextMessage(senderId,"Oh noo :< Không có người nào onl rùi. Chờ xíu ha");
                     }
                     collect.deleteOne({ _id: senderId.toString() });
                     collect.find({ gender: gender, favorite: fav }).limit(1).toArray((err, result) => {
@@ -31,7 +32,7 @@ var pair = (senderId, gender, fav) => {
 
                 collect.count({ gender: fav, favorite: gender }).then(count => {
                     if (count < 1) {
-                        return console.log("Oh noo =))) Không có user nào");
+                        return sendMessage.sendTextMessage(senderId,"Oh noo :< Không có người nào onl rùi. Chờ xíu ha");
                     }
                     collect.find({ gender: fav, favorite: gender }).limit(1).toArray((err, result) => {
                         let partnerId = result[0]._id;
