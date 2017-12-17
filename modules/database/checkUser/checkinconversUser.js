@@ -6,11 +6,11 @@ var checkincovers = (senderId) => {
             if (err) throw err;
             let collect = db.db('cspheartsync').collection('users');
             collect.find({ _id: senderId.toString() }).toArray(function (err, result) {
-                if (err) return reject (err)
+                if (err) return reject(err)
                 let incovers = result[0].preferences.inconversation;
                 resolve(incovers);
             });
         })
     })
 }
-module.exports={checkincovers:checkincovers}
+module.exports = { checkincovers: checkincovers }
