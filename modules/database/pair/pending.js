@@ -16,3 +16,4 @@ var pending = (senderId) => {
         })
     })
 }
+module.exports= {pending:pending}
