@@ -45,8 +45,7 @@ var pair = (senderId, gender, fav) => {
         }
     }
         if (fav === 'none') {               
-            console.log(fav)    
-            
+                
             mongodb.connect(url, (err, db) => {
                 let dbase = db.db('cspheartsync');
                 let collect = dbase.collection('pending');
@@ -75,4 +74,3 @@ var pair = (senderId, gender, fav) => {
             })
         }
 }
-pair("1212","female",'none');
