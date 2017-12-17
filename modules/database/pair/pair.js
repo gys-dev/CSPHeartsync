@@ -16,8 +16,9 @@ var pair = (senderId, gender, fav) => {
                         let partnerId = result[0]._id;
                         collect.deleteOne({ _id: partnerId.toString() });
                         let paired = dbase.collection('paired');
+                        console.log ("User 1 : " + senderId.toString() + " ; User 2 : " + partnerID.toString() +"\n");
                         paired.insert({ id1: senderId.toString(), id2: partnerId.toString() });
-                        paired.insert({ id1: partnerId.toString(), id2: senderId.toString() })
+                        paired.insert({ id1: partnerId.toString(), id2: senderId.toString() });
                     })
                 })
             })
@@ -37,8 +38,9 @@ var pair = (senderId, gender, fav) => {
                         let partnerId = result[0]._id;
                         collect.deleteOne({ _id: partnerId.toString() });
                         let paired = dbase.collection('paired');
+                        console.log ("User 1 : " + senderId.toString() + " ; User 2 : " + partnerID.toString() +"\n");
                         paired.insert({ id1: senderId.toString(), id2: partnerId.toString() });
-                        paired.insert({ id1: partnerId.toString(), id2: senderId.toString() })
+                        paired.insert({ id1: partnerId.toString(), id2: senderId.toString() });
                     })
                 })
             })
@@ -56,8 +58,9 @@ var pair = (senderId, gender, fav) => {
                             let partnerId = result[0]._id;
                             collect.deleteOne({ _id: partnerId.toString() });
                             let paired = dbase.collection('paired');
+                            console.log ("User 1 : " + senderId.toString() + " ; User 2 : " + partnerID.toString() +"\n");
                             paired.insert({ id1: senderId.toString(), id2: partnerId.toString() });
-                            paired.insert({ id1: partnerId.toString(), id2: senderId.toString() })
+                            paired.insert({ id1: partnerId.toString(), id2: senderId.toString() });
                         })
                     }
                     else {
@@ -66,8 +69,9 @@ var pair = (senderId, gender, fav) => {
                             let partnerId = result[0]._id;
                             collect.deleteOne({ _id: partnerId.toString() });
                             let paired = dbase.collection('paired');
+                            console.log ("User 1 : " + senderId.toString() + " ; User 2 : " + partnerID.toString() +"\n");
                             paired.insert({ id1: senderId.toString(), id2: partnerId.toString() });
-                            paired.insert({ id1: partnerId.toString(), id2: senderId.toString() })
+                            paired.insert({ id1: partnerId.toString(), id2: senderId.toString() });
                         })
                     }
                 })
