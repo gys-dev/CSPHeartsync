@@ -11,3 +11,14 @@
     + nếu ko có C:
         * đặt B vào đầu db
 - lặp quá trình trên (n / 2)
+- điều kiện để 2 người hợp
+```c++
+bool check (B, C)
+{
+    if (B.fav != "none")
+        if (B.fav != C.gender) return 0;
+    if (C.fav != "none")
+        if (C.fav != B.gender) return 0;
+    return 1;
+}
+```
