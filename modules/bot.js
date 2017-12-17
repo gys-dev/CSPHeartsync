@@ -4,7 +4,7 @@ let checkincovers = require('./database/checkUser/checkinconversUser'),
 class asyncBot {
     reply(senderId, textInput) {
         async(() => {
-            let incovers = await checkincovers.checkincovers(senderId);
+            let incovers = await (checkincovers.checkincovers(senderId));
             if (incovers === 0) {
                 pending.pending(senderId);
             }
@@ -12,7 +12,7 @@ class asyncBot {
                 //Send tin nhắn đã send
             }
             if (incovers === 2) {
-                let partnerId = await getPartner.getPartner(senderId);
+                let partnerId = await (getPartner.getPartner(senderId));
                 //Gửi đến cho parner
             }
         })()
