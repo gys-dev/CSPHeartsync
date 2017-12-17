@@ -2,7 +2,7 @@ let checkincovers = require('./database/checkUser/checkinconversUser'),
     getPartner = require('./database/partner/getPartner'),
     pending = require('./database/pair/pending'),
     sendMessage = require('./api/facebookAPI/sendMessage'),
-    postInfoUser = require('./database/postInfoUser/index');
+    postInfoUser = require('./database/postInfoUser/postInfoUser');
 class asyncBot {
     reply(senderId, textInput) {
         async(() => {
