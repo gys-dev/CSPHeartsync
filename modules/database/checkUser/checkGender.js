@@ -6,7 +6,6 @@ return new Promise((resolve, reject) => {
         let collect = db.db('cspheartsync').collection('users');
         collect.find({_id: senderId.toString()}).toArray(function(err,res){
             if(err) return reject(err);
-            console.log(gender)
             resolve(res[0].gender);
         })
     })
