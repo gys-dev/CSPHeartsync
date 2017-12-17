@@ -4,8 +4,8 @@ var mongodb = require('mongodb').MongoClient,
     getGender = require('../checkUser/checkGender'),
     pair = require('./pair');
 var pending = (senderId) => {
-    let favorite = await getFav.checkFav(senderId);
-    let gender = await getGender.checkGender(senderId);
+    let favorite = await (getFav.checkFav(senderId));
+    let gender = await (getGender.checkGender(senderId));
     mongodb.connect(url, (err, db) => {
         let collect = db.db('cspheartsync').collection('pending');
         collect.insert({ _id: senderId.toString(), favorite: favorite, gender: gender });
