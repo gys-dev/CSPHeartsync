@@ -6,8 +6,7 @@ var postInfoUser = async(senderId) => {
 var res = await getFbInfo.getFbInfo(senderId);    
 MongoClient.connect(url, (err, db) => {        
     if (err) throw err;
-    let dbase = db.db('cspheartsync');
-    let collect = dbase.collection('users'); 
+    let collect = db.db('cspheartsync').collection('users'); 
         collect.insert(res);
 })
 }

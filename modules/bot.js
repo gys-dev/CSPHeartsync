@@ -1,4 +1,4 @@
-let checkincovers = require('./database/checkUser/checkinguser');
+let checkincovers = require('./database/checkUser/checkinconversUser');
 class asyncBot {
     reply(senderId, textInput) {
         async(() => {

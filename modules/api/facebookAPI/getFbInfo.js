@@ -13,9 +13,9 @@ var getFbInfo = (senderId) => {
             var obj = { name: body.last_name + " " + body.first_name, 
             profile_pic: body.profile_pic, 
             gender: body.gender, 
-            _id: body.id, 
+            _id: body.id+"", 
             preferences:{
-                favorite: 0, //0 random, 1 male, 2 female
+                favorite: "none", 
                 inconversation: 0 //0 no, 1 pending, 2 yep
             }};
             resolve(obj);
