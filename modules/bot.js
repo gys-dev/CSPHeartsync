@@ -1,4 +1,4 @@
-let checkincovers = require('./database/checkUser/checkinconversUser'),
+var checkincovers = require('./database/checkUser/checkinconversUser'),
     getPartner = require('./database/partner/getPartner'),
     pending = require('./database/pair/pending'),
     sendMessage = require('./api/facebookAPI/sendMessage'),

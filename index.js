@@ -23,7 +23,6 @@ app.get('/webhook', function (req, res) {
 app.post('/webhook', function (req, res) {
     var entries = req.body.entry;
     for (var entry of entries) {
-        log.info(entries);
         var messaging = entry.messaging;
         for (var message of messaging) {
             var senderId = message.sender.id;
