@@ -1,24 +1,19 @@
-[OPENSOURCE] Source code của CSP Heartsync
+# [OPENSOURCE] Source code của CSP Heartsync
 
-CSP Heartsync là chatbot giúp bạn có thể kết nối với mọi người trong CSP
+## Overview
+    - CSP Heartsync là chatbot giúp bạn có thể kết nối với mọi người trong CSP
+    - CSP Heartsync là sản phẩm của Trần Công Việt An và Nguyễn Hoàng Minh, được sở hữu và quảng bá bởi CLB Công Nghệ ADaPT
+## Development  
+### Khung xây dựng tính năng
 
-:)) Khung xây dựng tính năng
-
-[ ] Xử lí việc người dùng bắt đầu
-
--> Xử lí check user [x]
-
--> Xử lí lựa chọn giới tính [ ]
-
-->Xử lí pair trai gái [ ]
-
-
-[ ] Xử lí trong khi nhắn tin
-
--> Xử lí loại tin nhắn [ ]
-
-[ ] Xử lí sau khi kết thúc
-
--> Xử lí destroy session
-
-Công nghệ sử dụng: MongoDB, Express,...
+    - [ ] Xử lí start user's session
+        + [x] Xử lí check user's status
+    - [ ] Xử lí lựa chọn giới tính
+    - [ ] Xử lí trong khi nhắn tin
+        + [ ] Xử lí lọc tin nhắn
+    - [ ] Xử lí kết thúc user's session
+        + [ ] Xử lí destroy session
+### Công nghệ sử dụng:
+    Node.js
+    MongoDB
+    Express
