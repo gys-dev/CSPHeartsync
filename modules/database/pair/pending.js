@@ -8,13 +8,32 @@ var pending = (senderId) => {
     let gender = await (getGender.checkGender(senderId));
     mongodb.connect(url, (err, db) => {
         let collect = db.db('cspheartsync').collection('pending');
-        collect.insert({ _id: senderId.toString(), favorite: favorite, gender: gender });
-        collect.count.then(res => {
-            if (res >= 2) {
-                pair(senderId.toString(), gender,fav);
-            }
-        })
+        collect.insert({
+            _id: senderId.toString(),
+            favorite: favorite,
+            gender: gender
+        });
+        var out = 0;
+        while (out === 0) {
+            var last_count = -1;
+            collect.count().then(res => {
+                if (res >= 2) {
+                    {
+                        if (res === last_count) {
+                            out = 1
+                        } else {
+                            collect.find().skip(res - 1).limit(1).toArray((err, result) => {
+                                pair(res[0]._id.toString(), res[0]._id.gender, res[0]._id.fav);
+                            })
+                        }
+
+                    }
+                }
+            })
+        }
     })
 }
 
-module.exports= {pending:pending}
+module.exports = {
+    pending: pending
+}

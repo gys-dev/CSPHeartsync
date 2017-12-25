@@ -327,14 +327,6 @@ var pair = (senderId, gender, fav) => {
 
     })
 }
-collect.insert({
-     _id: 3456,
-     favorite: 'male',
-     gender: 'male',
-}, (err, result) => {
-    let x = pair(1234, 'male', 'male');
-    console.log (x);
- });
 module.exports = {
     pair: pair
 }
