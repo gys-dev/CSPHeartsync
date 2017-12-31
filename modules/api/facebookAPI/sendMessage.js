@@ -116,6 +116,6 @@ class sendMessage {
             })
         })
     }
-}
+
 }
 module.exports = new sendMessage()
