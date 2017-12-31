@@ -11,7 +11,7 @@ var endChat = (senderId) => {
             let partnerId = a[0].id2;
             collect.deleteOne({ id1: senderId.toString() }, (err, b) => {
                 if (err) throw err;
-                collect.deleteOne({ id1: parnerId.toString() }, (err, c) => {
+                collect.deleteOne({ id1: partnerId.toString() }, (err, c) => {
                     if (err) throw err;
                     endC.endC(senderId).then(d => {
                         endC.endC(partnerId).then(e => {
