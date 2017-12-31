@@ -93,29 +93,5 @@ class sendMessage {
                 if (res.body.error) return console.log("err: " + res.body.error)
             })
     }
-    sendTextMessageWithPromise(senderId, text) {
-        return new Promise((resolve, reject) => {
-            request({
-                url: 'https://graph.facebook.com/v2.6/me/messages',
-                qs: {
-                    access_token: this._token
-                },
-                method: "POST",
-                json: {
-                    recipient: {
-                        id: senderId
-                    },
-                    message: {
-                        text: text
-                    }
-                }
-            }, (err, res, body) => {
-                if (err) throw (err);
-                if (res.body.error) throw (res.body.error);
-                resolve('ok')
-            })
-        })
-    }
-}
 }
 module.exports = new sendMessage()

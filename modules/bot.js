@@ -3,13 +3,11 @@ var checkincovers = require('./database/checkUser/checkinconversUser'),
     pending = require('./database/pair/pending'),
     sendMessage = require('./api/facebookAPI/sendMessage'),
     postInfoUser = require('./database/postInfoUser/postInfoUser'),
-    chooseFavorite = require('./database/chooseFavorite'),
-    endChat = require('./database/endchat');
+    chooseFavorite = require('./database/chooseFavorite');
 class asyncBot {
     reply(senderId, textInput) {
         textInput = textInput.toLowerCase();
         if (textInput === 'đổi giới tính') { sendMessage.sendButtonSelectGender(senderId) }
-        else if (textInput === 'end chat') { endChat.endChat(senderId) }
         else {
             (async () => {
                 let incovers = await (checkincovers.checkincovers(senderId));
@@ -55,7 +53,7 @@ class asyncBot {
     }
     select(senderId, gender) {
         (async () => {
-            let res = await (chooseFavorite.chooseFavorite(senderId, gender));
+            let res = await (chooseFavorite.chooseFavorite(senderId, ));
             sendMessage.sendTextMessage(senderId, res);
         })()
     }
