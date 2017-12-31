@@ -29,7 +29,10 @@ var user_pair = (senderId, partnerId, collect, list) => {
                         ]
                         paired.insertMany(objinsert, (err, res) => {
                             if (err) throw (err);
-                            // console.log('pair done');
+                            sendMessage.sendTextMessageWithPromise(senderId,"Hmmm bạn vừa kết nối với 1 người bạn mới, hãy thử bắt đầu cuộc trò chuyện nào").then(a=>{
+                                sendMessage.sendTextMessageWithPromise(partnerId,"Hmmm bạn vừa kết nối với 1 người bạn mới, hãy thử bắt đầu cuộc trò chuyện nào")
+
+                            })
                         })
                     })
             })
