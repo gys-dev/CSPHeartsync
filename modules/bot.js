@@ -5,25 +5,33 @@ var checkincovers = require('./database/checkUser/checkinconversUser'),
     postInfoUser = require('./database/postInfoUser/postInfoUser');
 class asyncBot {
     reply(senderId, textInput) {
-        (async() => {
+        (async () => {
             let incovers = await (checkincovers.checkincovers(senderId));
-            if(incovers==null){sendMessage.sendTextMessage(senderId,"Vui lòng xóa tất cả inbox và thử lại")}
+            if (incovers == null) { sendMessage.sendTextMessage(senderId, "Vui lòng xóa tất cả inbox và thử lại") }
             if (incovers === 0) {
-                sendMessage.sendTextMessage(senderId,"Đang thả câu <3");
+                sendMessage.sendTextMessage(senderId, "Đang thả câu <3");
                 pending.pending(senderId);
             }
             if (incovers === 1) {
-                sendMessage.sendTextMessage(senderId,"Bạn đã yêu cầu rồi. Vui lòng chờ để tìm người bạn phù hợp nhất nhá");
+                sendMessage.sendTextMessage(senderId, "Bạn đã yêu cầu rồi. Vui lòng chờ để tìm người bạn phù hợp nhất nhá");
             }
             if (incovers === 2) {
                 let partnerId = await (getPartner.getPartner(senderId));
-                sendMessage.sendTextMessage(partnerId,textInput);
+                sendMessage.sendTextMessage(partnerId, textInput);
             }
         })()
     }
-    get_started(senderId){
+    get_started(senderId) {
         postInfoUser.postInfoUser(senderId);
-        sendMessage.sendTextMessage(senderId,"Chào bạn <3");
+        sendMessage.sendTextMessage(senderId, "Chào bạn <3");
+    }
+
+    procPostback(senderId, payload) {
+        switch (payload) {
+            case "GET_STARTED": {
+                this.get_started(senderId);
+            }
+        }
     }
 }
 module.exports = new asyncBot();

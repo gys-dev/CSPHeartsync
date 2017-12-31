@@ -29,18 +29,15 @@ app.post('/heartsyncbeta/webhook', function (req, res) {
             var senderId = message.sender.id;
             if (message.message) {
                 if (message.message.text) {
-                    bot.reply(senderId,message.message.text);
+                    bot.reply(senderId, message.message.text);
                 }
             }
-            if(message.postback){
+            if (message.postback) {
                 let payload = message.postback.payload;
-                if(payload==='GET_STARTED'){
-                    bot.get_started(senderId);
-                }
+                bot.procPostback(senderId, payload);
             }
         }
     }
-
     res.status(200).send("OK");
 });
 
@@ -48,6 +45,6 @@ app.post('/heartsyncbeta/webhook', function (req, res) {
 app.set('port', process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 2345);
 app.set('ip', process.env.OPENSHIFT_NODEJS_IP || process.env.IP || "127.0.0.1");
 
-server.listen(app.get('port'), app.get('ip'), function() {
-  console.log("Express server listening at %s:%d ", app.get('ip'), app.get('port'));
+server.listen(app.get('port'), app.get('ip'), function () {
+    console.log("Express server listening at %s:%d ", app.get('ip'), app.get('port'));
 });
