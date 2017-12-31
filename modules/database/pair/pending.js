@@ -3,7 +3,7 @@ var mongodb = require('mongodb').MongoClient,
     getFav = require('../checkUser/checkFav'),
     getGender = require('../checkUser/checkGender'),
     pair = require('./pair');
-var pending = (senderId) => {
+var pending = async(senderId) => {
     let favorite = await (getFav.checkFav(senderId));
     let gender = await (getGender.checkGender(senderId));
     mongodb.connect(url, (err, db) => {
