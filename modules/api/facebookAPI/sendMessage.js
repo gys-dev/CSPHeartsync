@@ -142,5 +142,31 @@ class sendMessage {
                 if (res.body.error) return console.log("err: " + res.body.error)
             })
     }
+    sendAudio(senderId, url) {
+        request({
+            url: 'https://graph.facebook.com/v2.6/me/messages',
+            qs: {
+                access_token: this._token
+            },
+            method: 'POST',
+            json: {
+                recipient: {
+                    id: senderId
+                },
+                message: {
+                    attachment: {
+                        type: "audio",
+                        payload: {
+                            url: url
+                        }
+                    },
+                }
+            }
+        },
+            (err, res, body) => {
+                if (err) return console.log("Error: " + err)
+                if (res.body.error) return console.log("err: " + res.body.error)
+            })
+    }
 }
 module.exports = new sendMessage()
