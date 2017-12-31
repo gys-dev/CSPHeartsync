@@ -51,7 +51,7 @@ class sendMessage {
     }
     sendButtonSelectGender(senderId) {
         request({
-            url: 'http://graph.facebook.com/v2.6/me/messages',
+            url: 'https://graph.facebook.com/v2.6/me/messages',
             qs: {
                 access_token: this._token
             },
@@ -87,10 +87,11 @@ class sendMessage {
                     }
                 }
             }
-        },(err,res,body)=>{
-            if (err) return console.log("Error: " + err)
-            if (res.body.error) return console.log("err: " + res.body.error)
-        })
+        }
+            , (err, res, body) => {
+                if (err) return console.log("Error: " + err)
+                if (res.body.error) return console.log("err: " + res.body.error)
+            })
     }
 }
 module.exports = new sendMessage()

@@ -2,7 +2,8 @@ var checkincovers = require('./database/checkUser/checkinconversUser'),
     getPartner = require('./database/partner/getPartner'),
     pending = require('./database/pair/pending'),
     sendMessage = require('./api/facebookAPI/sendMessage'),
-    postInfoUser = require('./database/postInfoUser/postInfoUser');
+    postInfoUser = require('./database/postInfoUser/postInfoUser'),
+    chooseFavorite = require('./database/chooseFavorite');
 class asyncBot {
     reply(senderId, textInput) {
         textInput = textInput.toLowerCase();
@@ -35,6 +36,24 @@ class asyncBot {
             case "GET_STARTED": {
                 this.get_started(senderId);
                 break;
+            }
+            case "SELECT_MALE": {
+                chooseFavorite.chooseFavorite(senderId, 'male').then(res => {
+                    sendMessage.sendTextMessage(senderId, "Hì. Bạn ghép đôi tiếp theo là trai nhá :D Hì");
+                    break;
+                })
+            }
+            case "SELECT_FEMALE": {
+                chooseFavorite.chooseFavorite(senderId, 'female').then(res => {
+                    sendMessage.sendTextMessage(senderId, "Hì. Bạn ghép đôi tiếp theo là nữ nhá :D Hì");
+                    break;
+                })
+            }
+            case "SELECT_ANY": {
+                chooseFavorite.chooseFavorite(senderId, 'none').then(res => {
+                    sendMessage.sendTextMessage(senderId, "Hì. Bạn ghép đôi tiếp theo là giới tính lạ không xác định được hihi :D");
+                    break;
+                })
             }
         }
     }
