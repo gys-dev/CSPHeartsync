@@ -30,6 +30,7 @@ app.post('/heartsyncbeta/webhook', function (req, res) {
                 if (message.message.text) {
                     bot.reply(senderId,message.message.text);
                 }
+            console.log(message)
             }
         }
     }
@@ -38,7 +39,7 @@ app.post('/heartsyncbeta/webhook', function (req, res) {
 });
 
 
-app.set('port', process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3002);
+app.set('port', process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 2345);
 app.set('ip', process.env.OPENSHIFT_NODEJS_IP || process.env.IP || "127.0.0.1");
 
 server.listen(app.get('port'), app.get('ip'), function() {
