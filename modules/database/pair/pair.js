@@ -1,14 +1,17 @@
 var mongodb = require('mongodb').MongoClient,
     url = 'mongodb://localhost:27017',
-    sendMessage = require('../../api/facebookAPI/sendMessage');
+    sendMessage = require('../../api/facebookAPI/sendMessage'),
+    paired= require('../resUser/paired');
 /* Todo
 	fix user_pairing function to work in case of mongodb.insert being asycn
 */
 var user_pair = (senderId, partnerId, collect, list) => {
     collect.deleteOne({
         _id: partnerId.toString()
-    }, (err, obj) => {
+    }, async(err, obj) => {
         let paired = list.collection('paired');
+        let x = await(paired.paired(senderId));
+        let y = await(paired.paired(partnerId));
         console.log("User 1 : " + senderId.toString() + " ; User 2 : " + partnerId.toString() + "\n");
         var objinsert = [{
                 id1: senderId.toString(),
