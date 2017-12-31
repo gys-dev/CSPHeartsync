@@ -6,7 +6,7 @@ var checkincovers = require('./database/checkUser/checkinconversUser'),
 class asyncBot {
     reply(senderId, textInput) {
         textInput = textInput.toLowerCase();
-        if (textInput === 'đổi giới tính') {sendMessage.sendButtonSelectGender(senderId)}
+        if (textInput === 'đổi giới tính') { sendMessage.sendButtonSelectGender(senderId) }
         else {
             (async () => {
                 let incovers = await (checkincovers.checkincovers(senderId));

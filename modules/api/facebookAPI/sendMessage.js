@@ -87,6 +87,9 @@ class sendMessage {
                     }
                 }
             }
+        },(err,res,body)=>{
+            if (err) return console.log("Error: " + err)
+            if (res.body.error) return console.log("err: " + res.body.error)
         })
     }
 }
