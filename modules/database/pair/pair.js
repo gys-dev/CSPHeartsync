@@ -11,9 +11,9 @@ var user_pair = (senderId, partnerId, collect, list) => {
     }, (err, obj) => {
         console.log('bef');
         let paired = list.collection('paired');
-        pairr.paired(senderId)
+        pairr.pairr(senderId)
             .then(a => {
-                pairr.paired(partnerId)
+                pairr.pairr(partnerId)
                     .then(b => {
                         console.log('after');
 
