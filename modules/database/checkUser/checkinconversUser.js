@@ -7,6 +7,7 @@ var checkincovers = (senderId) => {
             let collect = db.db('cspheartsync').collection('users');
             collect.find({ _id: senderId.toString() }).toArray(function (err, result) {
                 if (err) return reject(err)
+                if(result==null || result==''){return resolve(null)}
                 let incovers = result[0].inconversation;
                 resolve(incovers);
             });

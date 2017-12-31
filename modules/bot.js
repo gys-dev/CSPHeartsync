@@ -7,6 +7,7 @@ class asyncBot {
     reply(senderId, textInput) {
         (async() => {
             let incovers = await (checkincovers.checkincovers(senderId));
+            if(incovers==null){sendMessage.sendTextMessage(senderId,"Vui lòng xóa tất cả inbox và thử lại")}
             if (incovers === 0) {
                 sendMessage.sendTextMessage(senderId,"Đang thả câu <3");
                 pending.pending(senderId);
