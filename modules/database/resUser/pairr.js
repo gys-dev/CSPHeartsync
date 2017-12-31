@@ -1,7 +1,7 @@
 var mongodb = require('mongodb').MongoClient,
     url = "mongodb://localhost:27017";
 
-var paired = (senderId) => {
+var pairr = (senderId) => {
     return new Promise((resolve, reject) => {
         mongodb.connect(url, (err, db) => {
             if (err) throw err;
@@ -11,4 +11,4 @@ var paired = (senderId) => {
 
 }
 
-module.exports = { paired: paired }
+module.exports = { pairr: pairr }

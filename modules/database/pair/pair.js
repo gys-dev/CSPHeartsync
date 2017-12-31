@@ -1,7 +1,7 @@
 var mongodb = require('mongodb').MongoClient,
     url = 'mongodb://localhost:27017',
     sendMessage = require('../../api/facebookAPI/sendMessage'),
-    paired = require('../resUser/paired');
+    pairr = require('../resUser/pairr');
 /* Todo
 	fix user_pairing function to work in case of mongodb.insert being asycn
 */
@@ -11,9 +11,9 @@ var user_pair = (senderId, partnerId, collect, list) => {
     }, (err, obj) => {
         console.log('bef');
         let paired = list.collection('paired');
-        paired.paired(senderId)
+        pairr.paired(senderId)
             .then(a => {
-                paired.paired(partnerId)
+                pairr.paired(partnerId)
                     .then(b => {
                         console.log('after');
 
