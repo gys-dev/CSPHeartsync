@@ -15,17 +15,17 @@ var pending = async (senderId) => {
             favorite: favorite,
             gender: gender
         }, (err, res) => {
-            console.log('hello')
             if (err) throw err;
-            inconverPending.inconverPending(senderId).then(res => {
-                    collect.count().then(res => {
-                        if (res >= 2) {
-                            collect.find().skip(res - 1).limit(1).toArray((err, result) => {
-                                pair.pair(result[0]._id.toString(), result[0].gender, result[0].favorite);
-                            })
-                        }
-                    })
-                })
+            inconverPending.inconverPending(senderId)
+            // .then(res => {
+            //         collect.count().then(res => {
+            //             if (res >= 2) {
+            //                 collect.find().skip(res - 1).limit(1).toArray((err, result) => {
+            //                     pair.pair(result[0]._id.toString(), result[0].gender, result[0].favorite);
+            //                 })
+            //             }
+            //         })
+            //     })
 
         });
 
