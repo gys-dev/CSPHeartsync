@@ -1,6 +1,7 @@
 var mongodb = require('mongodb').MongoClient,
     url = 'mongodb://localhost:27017',
-    endC = require('../resUser/endChat');
+    endC = require('../resUser/endChat'),
+    sendMessage = require('../../api/facebookAPI/sendMessage');
 
 var endChat = (senderId) => {
     mongodb.connect(url, (err, db) => {
@@ -15,8 +16,8 @@ var endChat = (senderId) => {
                     if (err) throw err;
                     endC.endC(senderId).then(d => {
                         endC.endC(partnerId).then(e => {
-                            sendTextMessageWithPromise(senderId, "Bạn đã kết thúc cuộc trò chuyện").then(f => {
-                                sendTextMessageWithPromise(partnerId, "Bạn đã kết thúc cuộc trò chuyện");
+                            sendMessage.sendTextMessageWithPromise(senderId, "Bạn đã kết thúc cuộc trò chuyện").then(f => {
+                                sendMessage.sendTextMessageWithPromise(partnerId, "Bạn đã kết thúc cuộc trò chuyện");
                             })
                         })
                     })
