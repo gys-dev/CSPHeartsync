@@ -7,7 +7,9 @@ var chooseFavorite = (senderId, gender) => {
             if (err) throw err;
             db.db('cspheartsync').collection('users').update({ _id: senderId.toString }, { $set: { favorite: gender } }, (err, res) => {
                 if (err) throw err;
-                resolve('ok')
+                if (gender === 'male') { resolve("Hì. Bạn ghép đôi tiếp theo là trai nhá :D ") }
+                if (gender === 'female') { resolve("Hì. Bạn ghép đôi tiếp theo là nữ nhá :D") }
+                if (gender === 'none') { resolve("Hì. Bạn ghép đôi tiếp theo là giới tính lạ không xác định được hihi :D") }
             })
         })
     })

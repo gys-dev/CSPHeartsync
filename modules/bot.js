@@ -38,24 +38,24 @@ class asyncBot {
                 break;
             }
             case "SELECT_MALE": {
-                chooseFavorite.chooseFavorite(senderId, 'male').then(res => {
-                    sendMessage.sendTextMessage(senderId, "Hì. Bạn ghép đôi tiếp theo là trai nhá :D Hì");
-                    break;
-                })
+                this.select(senderId, 'male');
+                break;
             }
             case "SELECT_FEMALE": {
-                chooseFavorite.chooseFavorite(senderId, 'female').then(res => {
-                    sendMessage.sendTextMessage(senderId, "Hì. Bạn ghép đôi tiếp theo là nữ nhá :D Hì");
-                    break;
-                })
+                this.select(senderId, 'female');
+                break;
             }
             case "SELECT_ANY": {
-                chooseFavorite.chooseFavorite(senderId, 'none').then(res => {
-                    sendMessage.sendTextMessage(senderId, "Hì. Bạn ghép đôi tiếp theo là giới tính lạ không xác định được hihi :D");
-                    break;
-                })
+                this.select(senderId, 'none');
+                break;
             }
         }
+    }
+    select(senderId, gender) {
+        (async () => {
+            let res = await (chooseFavorite.chooseFavorite(senderId, ));
+            sendMessage.sendTextMessage(senderId, res);
+        })()
     }
 }
 module.exports = new asyncBot();
