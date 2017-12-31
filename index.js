@@ -9,18 +9,18 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-app.get('/', (req, res) => {
+app.get('/heartsyncbeta', (req, res) => {
     res.send("It work!!");
 })
 
-app.get('/webhook', function (req, res) {
+app.get('/heartsyncbeta/webhook', function (req, res) {
     if (req.query['hub.verify_token'] === 'verify_token') {
         res.send(req.query['hub.challenge']);
     }
     res.send('Oops :< Wrong token. So sorry <3');
 });
 
-app.post('/webhook', function (req, res) {
+app.post('/heartsyncbeta/webhook', function (req, res) {
     var entries = req.body.entry;
     for (var entry of entries) {
         var messaging = entry.messaging;
