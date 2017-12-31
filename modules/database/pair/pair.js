@@ -8,27 +8,32 @@ var mongodb = require('mongodb').MongoClient,
 var user_pair = (senderId, partnerId, collect, list) => {
     collect.deleteOne({
         _id: partnerId.toString()
-    }, async (err, obj) => {
+    }, (err, obj) => {
         console.log('bef');
         let paired = list.collection('paired');
-        let x = await (paired.paired(senderId));
-        let y = await (paired.paired(partnerId));
-        console.log('after');
+        paired.paired(senderId)
+            .then(a => {
+                paired.paired(partnerId)
+                    .then(b => {
+                        console.log('after');
 
-        console.log("User 1 : " + senderId.toString() + " ; User 2 : " + partnerId.toString() + "\n");
-        var objinsert = [{
-            id1: senderId.toString(),
-            id2: partnerId.toString()
-        },
-        {
-            id1: partnerId.toString(),
-            id2: senderId.toString()
-        }
-        ]
-        paired.insertMany(objinsert, (err, res) => {
-            if (err) throw (err);
-            // console.log('pair done');
-        })
+                        console.log("User 1 : " + senderId.toString() + " ; User 2 : " + partnerId.toString() + "\n");
+                        var objinsert = [{
+                            id1: senderId.toString(),
+                            id2: partnerId.toString()
+                        },
+                        {
+                            id1: partnerId.toString(),
+                            id2: senderId.toString()
+                        }
+                        ]
+                        paired.insertMany(objinsert, (err, res) => {
+                            if (err) throw (err);
+                            // console.log('pair done');
+                        })
+                    })
+            })
+
     });
 }
 var pair = (senderId, gender, fav) => {
