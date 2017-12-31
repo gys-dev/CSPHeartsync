@@ -26,6 +26,7 @@ app.post('/heartsyncbeta/webhook', function (req, res) {
     for (var entry of entries) {
         var messaging = entry.messaging;
         for (var message of messaging) {
+            console.log(message);
             var senderId = message.sender.id;
             if (message.message) {
                 if (message.message.text) {
