@@ -43,7 +43,7 @@ app.post('/heartsyncbeta/webhook', function (req, res) {
                     }
                     if (type === 'audio') {
                         let payload = message.message.attachments[0].payload.url;
-                        bot.procImage(senderId, payload);
+                        bot.procAudio(senderId, payload);
                     }
                 }
             }
