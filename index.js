@@ -31,6 +31,21 @@ app.post('/heartsyncbeta/webhook', function (req, res) {
                 if (message.message.text) {
                     bot.reply(senderId, message.message.text);
                 }
+                if (message.message.attachments) {
+                    let type = message.message.attachments[0].type;
+                    if (type === 'image') {
+                        let payload = message.message.attachments[0].payload.url;
+                        bot.procImage(senderId, payload);
+                    }
+                    if (type === 'video') {
+                        let payload = message.message.attachments[0].payload.url;
+                        bot.procVideo(senderId, payload);
+                    }
+                    if (type === 'audio') {
+                        let payload = message.message.attachments[0].payload.url;
+                        bot.procAudio(senderId, payload);
+                    }
+                }
             }
             if (message.postback) {
                 let payload = message.postback.payload;
