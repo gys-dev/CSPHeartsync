@@ -5,7 +5,7 @@ var checkincovers = require('./database/checkUser/checkinconversUser'),
     postInfoUser = require('./database/postInfoUser/postInfoUser');
 class asyncBot {
     reply(senderId, textInput) {
-        async(() => {
+        (async() => {
             let incovers = await (checkincovers.checkincovers(senderId));
             if (incovers === 0) {
                 sendMessage.sendTextMessage(senderId,"Đang thả câu <3");
