@@ -31,7 +31,12 @@ app.post('/heartsyncbeta/webhook', function (req, res) {
                     bot.reply(senderId,message.message.text);
                 }
             }
-            console.log(message)
+            if(message.postback){
+                let payload = message.postback.payload;
+                if(payload==='GET_STARTED'){
+                    bot.get_started(senderId);
+                }
+            }
         }
     }
 
