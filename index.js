@@ -30,8 +30,8 @@ app.post('/heartsyncbeta/webhook', function (req, res) {
                 if (message.message.text) {
                     bot.reply(senderId,message.message.text);
                 }
-            console.log(message)
             }
+            console.log(message)
         }
     }
 
