@@ -6,7 +6,7 @@ var checkFav = (senderId) => {
             let collect = db.db('cspheartsync').collection('users');
             collect.find({_id: senderId.toString()}).toArray(function(err,res){
                 if(err) return reject(err);
-                resolve(res[0].preferences.favorite);
+                resolve(res[0].favorite);
             })
         })
     })

@@ -4,20 +4,20 @@ var getFbInfo = (senderId) => {
         request({
             url: 'https://graph.facebook.com/v2.11/' + senderId,
             qs: {
-                access_token: "EAALBIgDENZB8BAJYSxchUNyB0wECTzNo5ZCSEzt2WlZA0fbTeH4GsiZAZCmSVYToeRdGJD0l7ZBUZB9ZBKdlRdqN0ptmiVVCXFix8GrT5jaOq0J3jtkNZC7AtZBZCToLwh8ajrzsMChgI12lugnamE1CQBm9crBqdpBxXYDdy4iqZCZCSoORMgZCRwr53R"
+                access_token: "EAALBIgDENZB8BACVI8gHoHmRkNFYE2Cm4W1uwXV0Ywl60Id5mGg1ljJsUA0VKJMy6A0tGJtGJqA38eZAWtZA03g1XeLGHN3Um0Yfn4FcUeo3V5NCOZAbiCfwVpXpAzqd6RjZCUgNMUaWDs9JVvXwVraGkEhcQeiV2CRJFBwMg9AZDZD"
             },
             method: "GET"
         }, (err, res, body) => {
             if (err) return reject(err);
             body = JSON.parse(body);
-            var obj = { name: body.last_name + " " + body.first_name, 
-            profile_pic: body.profile_pic, 
-            gender: body.gender, 
-            _id: body.id+"", 
-            preferences:{
-                favorite: "none", 
+            var obj = {
+                name: body.last_name + " " + body.first_name,
+                profile_pic: body.profile_pic,
+                gender: body.gender,
+                _id: body.id + "",
+                favorite: "none",
                 inconversation: 0 //0 no, 1 pending, 2 yep
-            }};
+            };
             resolve(obj);
         })
     })

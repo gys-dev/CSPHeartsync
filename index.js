@@ -9,18 +9,19 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-app.get('/', (req, res) => {
+app.get('/heartsyncbeta', (req, res) => {
     res.send("It work!!");
 })
 
-app.get('/webhook', function (req, res) {
+app.get('/heartsyncbeta/webhook', function (req, res) {
     if (req.query['hub.verify_token'] === 'verify_token') {
         res.send(req.query['hub.challenge']);
     }
     res.send('Oops :< Wrong token. So sorry <3');
 });
 
-app.post('/webhook', function (req, res) {
+app.post('/heartsyncbeta/webhook', function (req, res) {
+    console.log('rec')
     var entries = req.body.entry;
     for (var entry of entries) {
         var messaging = entry.messaging;
@@ -31,6 +32,12 @@ app.post('/webhook', function (req, res) {
                     bot.reply(senderId,message.message.text);
                 }
             }
+            if(message.postback){
+                let payload = message.postback.payload;
+                if(payload==='GET_STARTED'){
+                    bot.get_started(senderId);
+                }
+            }
         }
     }
 
@@ -38,7 +45,7 @@ app.post('/webhook', function (req, res) {
 });
 
 
-app.set('port', process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3002);
+app.set('port', process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 2345);
 app.set('ip', process.env.OPENSHIFT_NODEJS_IP || process.env.IP || "127.0.0.1");
 
 server.listen(app.get('port'), app.get('ip'), function() {
