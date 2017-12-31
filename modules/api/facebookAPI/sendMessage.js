@@ -49,9 +49,9 @@ class sendMessage {
                 if (res.body.error) return console.log("err: " + res.body.error)
             })
     }
-    sendButtonUrl(senderId, text, url, title) {
+    sendButtonSelectGender(senderId) {
         request({
-            url: 'https://graph.facebook.com/v2.6/me/messages',
+            url: 'http://graph.facebook.com/v2.6/me/messages',
             qs: {
                 access_token: this._token
             },
@@ -65,23 +65,29 @@ class sendMessage {
                         type: "template",
                         payload: {
                             template_type: "button",
-                            text: text,
+                            text: "Bạn muốn người ghép đôi tiếp theo có giới tính gì nào?",
                             buttons: [
                                 {
-                                    type: "web_url",
-                                    url: url,
-                                    title: title
+                                    type: "postback",
+                                    payload: "SELECT_MALE",
+                                    title: "Nam nè :D"
                                 },
+                                {
+                                    type: "postback",
+                                    payload: "SELECT_FEMALE",
+                                    title: "Nữ nè :D"
+                                },
+                                {
+                                    type: "postback",
+                                    payload: "SELECT_ANY",
+                                    title: "Ai cũng được nè :D"
+                                }
                             ]
                         }
                     }
                 }
             }
-        },
-            (err, res, body) => {
-                if (err) return console.log("Error: " + err)
-                if (res.body.error) return console.log("err: " + res.body.error)
-            })
+        })
     }
 }
 module.exports = new sendMessage()
