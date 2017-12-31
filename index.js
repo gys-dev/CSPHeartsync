@@ -26,11 +26,13 @@ app.post('/heartsyncbeta/webhook', function (req, res) {
     for (var entry of entries) {
         var messaging = entry.messaging;
         for (var message of messaging) {
-            console.log(message);
             var senderId = message.sender.id;
             if (message.message) {
                 if (message.message.text) {
                     bot.reply(senderId, message.message.text);
+                }
+                if(message.attachments){
+                    console.log(message.attachments)
                 }
             }
             if (message.postback) {
