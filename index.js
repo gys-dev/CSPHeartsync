@@ -31,7 +31,7 @@ app.post('/heartsyncbeta/webhook', function (req, res) {
                 if (message.message.text) {
                     bot.reply(senderId, message.message.text);
                 }
-                if(message.attachments){
+                if (message.message.attachments) {
                     console.log(message.attachments)
                 }
             }
