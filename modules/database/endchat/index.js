@@ -6,7 +6,7 @@ var endChat = (senderId) => {
     mongodb.connect(url, (err, db) => {
         if (err) throw err;
         let collect = db.db('cspheartsync').collection('paired');
-        collect.find({ id1: senderId.toString }).toArray((err, a) => {
+        collect.find({ id1: senderId.toString() }).toArray((err, a) => {
             if (err) throw err;
             let partnerId = a[0].id2;
             collect.deleteOne({ id1: senderId.toString() }, (err, b) => {
@@ -26,4 +26,4 @@ var endChat = (senderId) => {
     })
 }
 
-module.exports={endChat:endChat}
+module.exports = { endChat: endChat }
