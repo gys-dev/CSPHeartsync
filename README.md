@@ -5,7 +5,7 @@
 - CSP Heartsync là sản phẩm của Trần Công Việt An và Nguyễn Hoàng Minh, được sở hữu và quảng bá bởi CLB Công Nghệ ADaPT
 ## Development  
 ### Khung xây dựng tính năng
-- [ ] Xử lí start user's session
+- [x] Xử lí start user's session
     + [x] Xử lí check user's status
 - [ ] Xử lí lựa chọn giới tính
 - [ ] Xử lí trong khi nhắn tin
