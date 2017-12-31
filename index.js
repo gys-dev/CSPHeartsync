@@ -32,7 +32,7 @@ app.post('/heartsyncbeta/webhook', function (req, res) {
                     bot.reply(senderId, message.message.text);
                 }
                 if (message.message.attachments) {
-                    console.log(message.attachments)
+                    console.log(message.message.attachments)
                 }
             }
             if (message.postback) {
