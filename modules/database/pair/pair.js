@@ -1,26 +1,29 @@
 var mongodb = require('mongodb').MongoClient,
     url = 'mongodb://localhost:27017',
     sendMessage = require('../../api/facebookAPI/sendMessage'),
-    paired= require('../resUser/paired');
+    paired = require('../resUser/paired');
 /* Todo
 	fix user_pairing function to work in case of mongodb.insert being asycn
 */
 var user_pair = (senderId, partnerId, collect, list) => {
     collect.deleteOne({
         _id: partnerId.toString()
-    }, async(err, obj) => {
+    }, async (err, obj) => {
+        console.log('bef');
         let paired = list.collection('paired');
-        let x = await(paired.paired(senderId));
-        let y = await(paired.paired(partnerId));
+        let x = await (paired.paired(senderId));
+        let y = await (paired.paired(partnerId));
+        console.log('after');
+
         console.log("User 1 : " + senderId.toString() + " ; User 2 : " + partnerId.toString() + "\n");
         var objinsert = [{
-                id1: senderId.toString(),
-                id2: partnerId.toString()
-            },
-            {
-                id1: partnerId.toString(),
-                id2: senderId.toString()
-            }
+            id1: senderId.toString(),
+            id2: partnerId.toString()
+        },
+        {
+            id1: partnerId.toString(),
+            id2: senderId.toString()
+        }
         ]
         paired.insertMany(objinsert, (err, res) => {
             if (err) throw (err);
@@ -70,10 +73,10 @@ var pair = (senderId, gender, fav) => {
                                                     user_pair(senderId, partnerId, collect, list);
                                                     return 'matched'
                                                 }
-                                            );
+                                                );
                                         }
                                     }
-                                )
+                                    )
                             } else // (male; male) - (male; male) match found
                             {
                                 collect.find({
@@ -84,10 +87,10 @@ var pair = (senderId, gender, fav) => {
                                         let partnerId = result[0]._id;
                                         user_pair(senderId, partnerId, collect, list);
                                     }
-                                );
+                                    );
                             }
                         }
-                    );
+                        );
                 } else if (fav === 'female') {
                     collect.count({
                         gender: 'female',
@@ -118,10 +121,10 @@ var pair = (senderId, gender, fav) => {
                                                     let partnerId = result[0]._id;
                                                     user_pair(senderId, partnerId, collect, list);
                                                 }
-                                            );
+                                                );
                                         }
                                     }
-                                )
+                                    )
                             } else // (male; female) - (female; male) match found
                             {
                                 collect.find({
@@ -132,10 +135,10 @@ var pair = (senderId, gender, fav) => {
                                         let partnerId = result[0]._id;
                                         user_pair(senderId, partnerId, collect, list);
                                     }
-                                );
+                                    );
                             }
                         }
-                    );
+                        );
                 } else if (fav === 'none') {
                     collect.count({
                         favorite: 'male'
@@ -163,10 +166,10 @@ var pair = (senderId, gender, fav) => {
                                                     let partnerId = result[0]._id;
                                                     user_pair(senderId, partnerId, collect, list);
                                                 }
-                                            );
+                                                );
                                         }
                                     }
-                                )
+                                    )
                             } else // (male; none) - (x; male) match found
                             {
                                 collect.find({
@@ -176,10 +179,10 @@ var pair = (senderId, gender, fav) => {
                                         let partnerId = result[0]._id;
                                         user_pair(senderId, partnerId, collect, list);
                                     }
-                                );
+                                    );
                             }
                         }
-                    );
+                        );
                 }
             }
 
@@ -214,10 +217,10 @@ var pair = (senderId, gender, fav) => {
                                                     let partnerId = result[0]._id;
                                                     user_pair(senderId, partnerId, collect, list);
                                                 }
-                                            );
+                                                );
                                         }
                                     }
-                                )
+                                    )
                             } else // (female; male) - (male; female) match found
                             {
                                 collect.find({
@@ -228,10 +231,10 @@ var pair = (senderId, gender, fav) => {
                                         let partnerId = result[0]._id;
                                         user_pair(senderId, partnerId, collect, list);
                                     }
-                                );
+                                    );
                             }
                         }
-                    );
+                        );
                 } else if (fav === 'female') {
                     collect.count({
                         gender: 'female',
@@ -262,10 +265,10 @@ var pair = (senderId, gender, fav) => {
                                                     let partnerId = result[0]._id;
                                                     user_pair(senderId, partnerId, collect, list);
                                                 }
-                                            );
+                                                );
                                         }
                                     }
-                                )
+                                    )
                             } else // (female; female) - (female; female) match found
                             {
                                 collect.find({
@@ -276,10 +279,10 @@ var pair = (senderId, gender, fav) => {
                                         let partnerId = result[0]._id;
                                         user_pair(senderId, partnerId, collect, list);
                                     }
-                                );
+                                    );
                             }
                         }
-                    );
+                        );
                 } else if (fav === 'none') {
                     collect.count({
                         favorite: 'female'
@@ -307,10 +310,10 @@ var pair = (senderId, gender, fav) => {
                                                     let partnerId = result[0]._id;
                                                     user_pair(senderId, partnerId, collect, list);
                                                 }
-                                            );
+                                                );
                                         }
                                     }
-                                )
+                                    )
                             } else // (female; none) - (x; female) match found
                             {
                                 collect.find({
@@ -320,10 +323,10 @@ var pair = (senderId, gender, fav) => {
                                         let partnerId = result[0]._id;
                                         user_pair(senderId, partnerId, collect, list);
                                     }
-                                );
+                                    );
                             }
                         }
-                    );
+                        );
                 }
             }
         });

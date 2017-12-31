@@ -17,7 +17,7 @@ var pending = async (senderId) => {
         }, (err, res) => {
             if (err) throw err;
             inconverPending.inconverPending(senderId)
-            .then(ress => {
+                .then(ress => {
                     collect.count().then(res => {
                         if (res >= 2) {
                             collect.find().skip(res - 1).limit(1).toArray((err, result) => {
