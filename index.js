@@ -21,6 +21,7 @@ app.get('/heartsyncbeta/webhook', function (req, res) {
 });
 
 app.post('/heartsyncbeta/webhook', function (req, res) {
+    console.log('rec')
     var entries = req.body.entry;
     for (var entry of entries) {
         var messaging = entry.messaging;
