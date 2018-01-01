@@ -27,9 +27,9 @@ var endChat = (senderId) => {
             }
             else {
                 endC.endC(senderId).then(g => {
-                    db.db('cspheartsync').collection('pending').deleteOne({_id:senderId.toString()},(err,res)=>{
-                        if(err) throw err
-                            sendMessage.sendTextMessage(senderId,"Bạn đã hủy yêu cầu tìm bạn. Để tìm bạn hãy nhắn một chữ bất kì nhée")
+                    db.db('cspheartsync').collection('pending').deleteOne({ _id: senderId.toString() }, (err, res) => {
+                        if (err) throw err
+                        sendMessage.sendTextMessage(senderId, "Bạn đã hủy yêu cầu tìm bạn. Để tìm bạn hãy nhắn một chữ bất kì nhée")
                     })
                 })
             }
