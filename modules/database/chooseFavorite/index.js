@@ -16,7 +16,7 @@ var chooseFavorite = (senderId, gender) => {
                     {
                         if (count > 0) 
                         {
-                            sendMessage.sendBotMessage (senderId, "Để cho thay đổi có hiệu lực, hãy nhắn end để ra khỏi hàng đợi và nhắn tin bất kỳ để trở lại hàng đợi", "Cảm ơn bạn nhiều")
+                            sendMessage.sendBotMessage (senderId, "Thông báo", "Để cho thay đổi có hiệu lực, hãy nhắn end để ra khỏi hàng đợi và nhắn tin bất kỳ để trở lại hàng đợi")
                         }
                     }
                 )

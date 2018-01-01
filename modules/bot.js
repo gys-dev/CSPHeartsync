@@ -60,7 +60,7 @@ class asyncBot {
     select(senderId, gender) {
         (async () => {
             let res = await (chooseFavorite.chooseFavorite(senderId, gender));
-            sendMessage.sendTextMessage(senderId, res);
+            sendMessage.sendBotMessage(senderId, res);
         })()
     }
     procImage(senderId, payload) {
