@@ -1,7 +1,8 @@
 var mongodb = require('mongodb').MongoClient,
     url = 'mongodb://localhost:27017',
     sendMessage = require('../../api/facebookAPI/sendMessage'),
-    pairr = require('../resUser/pairr');
+    pairr = require('../resUser/pair'),
+    pair_log = require('../history');
 /* Todo
 	fix user_pairing function to work in case of mongodb.insert being asycn
 */
@@ -30,7 +31,7 @@ var user_pair = (senderId, partnerId, collect, list) => {
                         paired.insertMany(objinsert, (err, res) => {
                             if (err) throw (err);
                             sendMessage.sendTextMessageWithPromise(senderId,"Hmmm bạn vừa kết nối với 1 người bạn mới, hãy thử bắt đầu cuộc trò chuyện nào").then(a=>{
-                                sendMessage.sendTextMessageWithPromise(partnerId,"Hmmm bạn vừa kết nối với 1 người bạn mới, hãy thử bắt đầu cuộc trò chuyện nào")
+                                sendMessage.sendTextMessageWithPromise(partnerId,"Hmmm bạn vừa kết nối với 1 người bạn mới, hãy thử bắt đầu cuộc trò chuyện nào").then(b=>{pair_log.pair_log(senderId,partnerId)})
 
                             })
                         })
