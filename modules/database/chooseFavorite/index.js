@@ -18,8 +18,7 @@ var chooseFavorite = (senderId, gender) => {
                         {
                             db.db('cspheartsync').collection('pending').update({ _id: senderId.toString() }, { $set: { favorite: gender } }, (err, res) => {
                                 if (err) throw err;
-                                console.log ("haha");
-                                // pending.pending (senderId);
+                                pending.pending (senderId);
                             })
                         }
                     }
