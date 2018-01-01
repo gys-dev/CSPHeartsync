@@ -17,8 +17,8 @@ var endChat = (senderId) => {
                         if (err) throw err;
                         endC.endC(senderId).then(d => {
                             endC.endC(partnerId).then(e => {
-                                sendMessage.sendBotMessageWithPromise(senderId, "Bạn đã kết thúc cuộc trò chuyện", "").then(f => {
-                                    sendMessage.sendBotMessageWithPromise(partnerId, "Cuộc trò chuyện đã kết thúc", "");
+                                sendMessage.sendBotMessageWithPromise(senderId, "Bạn đã kết thúc cuộc trò chuyện", "Bấm phím bất kỳ để tiếp tục tìm bạn nha").then(f => {
+                                    sendMessage.sendBotMessageWithPromise(partnerId, "Cuộc trò chuyện đã kết thúc", "Bấm phím bất kỳ để tiếp tục tìm bạn nha");
                                 })
                             })
                         })
