@@ -130,17 +130,17 @@ class sendMessage {
                             buttons: [{
                                     type: "postback",
                                     payload: "SELECT_MALE",
-                                    title: "Nam nè :D"
+                                    title: "Nam nhé :D"
                                 },
                                 {
                                     type: "postback",
                                     payload: "SELECT_FEMALE",
-                                    title: "Nữ nè :D"
+                                    title: "Nữ nhé :D"
                                 },
                                 {
                                     type: "postback",
                                     payload: "SELECT_ANY",
-                                    title: "Ai cũng được nè :D"
+                                    title: "Nam hay nữ đều được nhé :D"
                                 }
                             ]
                         }
