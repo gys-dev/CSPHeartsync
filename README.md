@@ -7,12 +7,12 @@
 ### Khung xây dựng tính năng
 - [x] Xử lí start user's session
     + [x] Xử lí check user's status
-- [ ] Xử lí lựa chọn giới tính
-- [ ] Xử lí trong khi nhắn tin
-    + [ ] Xử lí lọc tin nhắn
-- [ ] Xử lí kết thúc user's session
-    + [ ] Xử lí destroy session
+- [x] Xử lí lựa chọn giới tính
+- [x] Xử lí trong khi nhắn tin
+    + [x] Xử lí lọc tin nhắn
+- [x] Xử lí kết thúc user's session
+    + [x] Xử lí destroy session
 ### Công nghệ sử dụng:
-Node.js
-MongoDB
-Express
++ Node.js
++ MongoDB
++ Express
