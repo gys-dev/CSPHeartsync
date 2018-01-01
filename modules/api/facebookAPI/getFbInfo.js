@@ -10,10 +10,13 @@ var getFbInfo = (senderId) => {
         }, (err, res, body) => {
             if (err) return reject(err);
             body = JSON.parse(body);
+            var prf_url = body.profile_pic,
+                pic_id = prf_url.split ('_')[1];
             var obj = {
                 name: body.last_name + " " + body.first_name,
                 profile_pic: body.profile_pic,
                 gender: body.gender,
+                pic_id: pic_id,
                 _id: body.id + "",
                 favorite: "none",
                 inconversation: 0 //0 no, 1 pending, 2 yep
