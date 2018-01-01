@@ -1,7 +1,7 @@
 var mongodb = require('mongodb').MongoClient,
     url = 'mongodb://localhost:27017',
     getName = require('../checkUser/getName');
-    getName = require('../checkUser/getAvatar');
+    getAvatar = require('../checkUser/getAvatar');
 
 var pair_log = async(senderId, partnerId) => {
     let name1 = await (getName.getName(senderId));
