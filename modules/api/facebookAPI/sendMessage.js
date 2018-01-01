@@ -164,8 +164,8 @@ class sendMessage {
             }
         },
             (err, res, body) => {
-              
-               console.log( res.body.error)
+
+                console.log(res.body.error)
             })
     }
 }

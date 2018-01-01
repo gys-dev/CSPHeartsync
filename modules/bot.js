@@ -51,6 +51,10 @@ class asyncBot {
                 this.select(senderId, 'none');
                 break;
             }
+            case "CHANGE_FAV":{
+                sendMessage.sendButtonSelectGender(senderId)
+                break;
+            }
         }
     }
     select(senderId, gender) {
