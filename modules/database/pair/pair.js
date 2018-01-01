@@ -1,7 +1,7 @@
 var mongodb = require('mongodb').MongoClient,
     url = 'mongodb://localhost:27017',
     sendMessage = require('../../api/facebookAPI/sendMessage'),
-    pairr = require('../resUser/pair'),
+    pairr = require('../resUser/pairr'),
     pair_log = require('../history');
 /* Todo
 	fix user_pairing function to work in case of mongodb.insert being asycn
