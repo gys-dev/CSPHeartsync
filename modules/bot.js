@@ -13,13 +13,13 @@ class asyncBot {
         else {
             (async () => {
                 let incovers = await (checkincovers.checkincovers(senderId));
-                if (incovers == null) { sendMessage.sendTextMessage(senderId, "Vui lòng xóa tất cả inbox và thử lại") }
+                if (incovers == null) { sendMessage.sendTextMessage(senderId, "Đã có lỗi xảy ra. Vui lòng xóa tất cả inbox và thử lại") }
                 if (incovers === 0) {
-                    sendMessage.sendTextMessage(senderId, "Đang thả câu <3");
+                    sendMessage.sendTextMessage(senderId, "Đang tìm cặp cho bạn <3");
                     pending.pending(senderId);
                 }
                 if (incovers === 1) {
-                    sendMessage.sendTextMessage(senderId, "Bạn đã yêu cầu rồi. Vui lòng chờ để tìm người bạn phù hợp nhất nhá");
+                    sendMessage.sendTextMessage(senderId, "Bạn vẫn đang ở trong hàng đợi. Vui lòng chờ thêm một lúc nữa nhé <3");
                 }
                 if (incovers === 2) {
                     let partnerId = await (getPartner.getPartner(senderId));
@@ -66,13 +66,13 @@ class asyncBot {
     procImage(senderId, payload) {
         (async () => {
             let incovers = await (checkincovers.checkincovers(senderId));
-            if (incovers == null) { sendMessage.sendTextMessage(senderId, "Vui lòng xóa tất cả inbox và thử lại") }
+            if (incovers == null) { sendMessage.sendTextMessage(senderId, "Đã có lỗi xảy ra. Vui lòng xóa tất cả inbox và thử lại") }
             if (incovers === 0) {
-                sendMessage.sendTextMessage(senderId, "Đang thả câu <3");
+                sendMessage.sendTextMessage(senderId, "Đang tìm cặp cho bạn <3");
                 pending.pending(senderId);
             }
             if (incovers === 1) {
-                sendMessage.sendTextMessage(senderId, "Bạn đã yêu cầu rồi. Vui lòng chờ để tìm người bạn phù hợp nhất nhá");
+                sendMessage.sendTextMessage(senderId, "Bạn vẫn đang ở trong hàng đợi. Vui lòng chờ thêm một lúc nữa nhé <3");
             }
             if (incovers === 2) {
                 let partnerId = await (getPartner.getPartner(senderId));
@@ -83,13 +83,13 @@ class asyncBot {
     procVideo(senderId, payload) {
         (async () => {
             let incovers = await (checkincovers.checkincovers(senderId));
-            if (incovers == null) { sendMessage.sendTextMessage(senderId, "Vui lòng xóa tất cả inbox và thử lại") }
+            if (incovers == null) { sendMessage.sendTextMessage(senderId, "Đã có lỗi xảy ra. Vui lòng xóa tất cả inbox và thử lại") }
             if (incovers === 0) {
-                sendMessage.sendTextMessage(senderId, "Đang thả câu <3");
+                sendMessage.sendTextMessage(senderId, "Đang tìm cặp cho bạn <3");
                 pending.pending(senderId);
             }
             if (incovers === 1) {
-                sendMessage.sendTextMessage(senderId, "Bạn đã yêu cầu rồi. Vui lòng chờ để tìm người bạn phù hợp nhất nhá");
+                sendMessage.sendTextMessage(senderId, "Bạn vẫn đang ở trong hàng đợi. Vui lòng chờ thêm một lúc nữa nhé <3");
             }
             if (incovers === 2) {
                 let partnerId = await (getPartner.getPartner(senderId));
@@ -100,13 +100,13 @@ class asyncBot {
     procAudio(senderId, payload) {
         (async () => {
             let incovers = await (checkincovers.checkincovers(senderId));
-            if (incovers == null) { sendMessage.sendTextMessage(senderId, "Vui lòng xóa tất cả inbox và thử lại") }
+            if (incovers == null) { sendMessage.sendTextMessage(senderId, "Đã có lỗi xảy ra. Vui lòng xóa tất cả inbox và thử lại") }
             if (incovers === 0) {
-                sendMessage.sendTextMessage(senderId, "Đang thả câu <3");
+                sendMessage.sendTextMessage(senderId, "Đang tìm cặp cho bạn <3");
                 pending.pending(senderId);
             }
             if (incovers === 1) {
-                sendMessage.sendTextMessage(senderId, "Bạn đã yêu cầu rồi. Vui lòng chờ để tìm người bạn phù hợp nhất nhá");
+                sendMessage.sendTextMessage(senderId, "Bạn vẫn đang ở trong hàng đợi. Vui lòng chờ thêm một lúc nữa nhé <3");
             }
             if (incovers === 2) {
                 let partnerId = await (getPartner.getPartner(senderId));

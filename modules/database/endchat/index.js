@@ -17,8 +17,8 @@ var endChat = (senderId) => {
                         if (err) throw err;
                         endC.endC(senderId).then(d => {
                             endC.endC(partnerId).then(e => {
-                                sendMessage.sendTextMessageWithPromise(senderId, "Bạn đã kết thúc cuộc trò chuyện").then(f => {
-                                    sendMessage.sendTextMessageWithPromise(partnerId, "Bạn đã kết thúc cuộc trò chuyện");
+                                sendMessage.sendBotMessageWithPromise(senderId, "Bạn đã kết thúc cuộc trò chuyện", "").then(f => {
+                                    sendMessage.sendBotMessageWithPromise(partnerId, "Cuộc trò chuyện đã kết thúc", "");
                                 })
                             })
                         })
@@ -29,7 +29,7 @@ var endChat = (senderId) => {
                 endC.endC(senderId).then(g => {
                     db.db('cspheartsync').collection('pending').deleteOne({ _id: senderId.toString() }, (err, res) => {
                         if (err) throw err
-                        sendMessage.sendTextMessage(senderId, "Bạn đã hủy yêu cầu tìm bạn. Để tìm bạn hãy nhắn một chữ bất kì nhée")
+                        sendMessage.sendTextMessage(senderId, "Bạn đã hủy yêu cầu tìm bạn. Nhắn bất kỳ thứ gì để tìm bạn lại nhé")
                     })
                 })
             }
