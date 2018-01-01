@@ -1,5 +1,5 @@
 var mongodb = require('mongodb').MongoClient,
-    pending = require('../pair/pending'),
+    sendMessage = require('../../api/facebookAPI/sendMessage'),
     url = 'mongodb://localhost:27017';
 
 var chooseFavorite = (senderId, gender) => {
@@ -16,10 +16,7 @@ var chooseFavorite = (senderId, gender) => {
                     {
                         if (count > 0) 
                         {
-                            db.db('cspheartsync').collection('pending').update({ _id: senderId.toString() }, { $set: { favorite: gender } }, (err, res) => {
-                                if (err) throw err;
-                                pending.pending (senderId);
-                            })
+                            sendMessage.sendBotMessage (senderId, "Để cho thay đổi có hiệu lực, hãy nhắn end để ra khỏi hàng đợi và nhắn tin bất kỳ để trở lại hàng đợi", "Cảm ơn bạn nhiều")
                         }
                     }
                 )
