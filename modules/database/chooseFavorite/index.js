@@ -14,14 +14,14 @@ var chooseFavorite = (senderId, gender) => {
                 db.db('cspheartsync').collection('pending').count ({_id : senderId.toString ()}).then (
                     count => 
                     {
-                        console.log ("count is" + count)
-                        /* if (count != 0) 
+                        if (count > 0) 
                         {
                             db.db('cspheartsync').collection('pending').update({ _id: senderId.toString() }, { $set: { favorite: gender } }, (err, res) => {
                                 if (err) throw err;
-                                pending.pending (senderId);
+                                console.log ("haha");
+                                // pending.pending (senderId);
                             })
-                        } */
+                        }
                     }
                 )
             })
