@@ -9,17 +9,17 @@ class asyncBot {
     reply(senderId, textInput) {
         textInput = textInput.toLowerCase();
         if (textInput === 'đổi giới tính') { sendMessage.sendButtonSelectGender(senderId) }
-        else if (textInput === 'end chat') { endChat.endChat(senderId) }
+        else if (textInput === 'end chat' | textInput === 'end') { endChat.endChat(senderId) }
         else {
             (async () => {
                 let incovers = await (checkincovers.checkincovers(senderId));
-                if (incovers == null) { sendMessage.sendTextMessage(senderId, "Vui lòng xóa tất cả inbox và thử lại") }
+                if (incovers == null) { sendMessage.sendTextMessage(senderId, "Đã có lỗi xảy ra. Vui lòng xóa tất cả inbox và thử lại") }
                 if (incovers === 0) {
-                    sendMessage.sendTextMessage(senderId, "Đang thả câu <3");
+                    sendMessage.sendTextMessage(senderId, "Đang tìm cặp cho bạn <3");
                     pending.pending(senderId);
                 }
                 if (incovers === 1) {
-                    sendMessage.sendTextMessage(senderId, "Bạn đã yêu cầu rồi. Vui lòng chờ để tìm người bạn phù hợp nhất nhá");
+                    sendMessage.sendTextMessage(senderId, "Bạn vẫn đang ở trong hàng đợi. Vui lòng chờ thêm một lúc nữa nhé <3");
                 }
                 if (incovers === 2) {
                     let partnerId = await (getPartner.getPartner(senderId));
@@ -51,12 +51,67 @@ class asyncBot {
                 this.select(senderId, 'none');
                 break;
             }
+            case "CHANGE_FAV":{
+                sendMessage.sendButtonSelectGender(senderId)
+                break;
+            }
         }
     }
     select(senderId, gender) {
         (async () => {
             let res = await (chooseFavorite.chooseFavorite(senderId, gender));
-            sendMessage.sendTextMessage(senderId, res);
+            sendMessage.sendBotMessage(senderId, res, "Cảm ơn bạn");
+        })()
+    }
+    procImage(senderId, payload) {
+        (async () => {
+            let incovers = await (checkincovers.checkincovers(senderId));
+            if (incovers == null) { sendMessage.sendTextMessage(senderId, "Đã có lỗi xảy ra. Vui lòng xóa tất cả inbox và thử lại") }
+            if (incovers === 0) {
+                sendMessage.sendTextMessage(senderId, "Đang tìm cặp cho bạn <3");
+                pending.pending(senderId);
+            }
+            if (incovers === 1) {
+                sendMessage.sendTextMessage(senderId, "Bạn vẫn đang ở trong hàng đợi. Vui lòng chờ thêm một lúc nữa nhé <3");
+            }
+            if (incovers === 2) {
+                let partnerId = await (getPartner.getPartner(senderId));
+                sendMessage.sendImage(partnerId, payload);
+            }
+        })()
+    }
+    procVideo(senderId, payload) {
+        (async () => {
+            let incovers = await (checkincovers.checkincovers(senderId));
+            if (incovers == null) { sendMessage.sendTextMessage(senderId, "Đã có lỗi xảy ra. Vui lòng xóa tất cả inbox và thử lại") }
+            if (incovers === 0) {
+                sendMessage.sendTextMessage(senderId, "Đang tìm cặp cho bạn <3");
+                pending.pending(senderId);
+            }
+            if (incovers === 1) {
+                sendMessage.sendTextMessage(senderId, "Bạn vẫn đang ở trong hàng đợi. Vui lòng chờ thêm một lúc nữa nhé <3");
+            }
+            if (incovers === 2) {
+                let partnerId = await (getPartner.getPartner(senderId));
+                sendMessage.sendVideo(partnerId, payload);
+            }
+        })()
+    }
+    procAudio(senderId, payload) {
+        (async () => {
+            let incovers = await (checkincovers.checkincovers(senderId));
+            if (incovers == null) { sendMessage.sendTextMessage(senderId, "Đã có lỗi xảy ra. Vui lòng xóa tất cả inbox và thử lại") }
+            if (incovers === 0) {
+                sendMessage.sendTextMessage(senderId, "Đang tìm cặp cho bạn <3");
+                pending.pending(senderId);
+            }
+            if (incovers === 1) {
+                sendMessage.sendTextMessage(senderId, "Bạn vẫn đang ở trong hàng đợi. Vui lòng chờ thêm một lúc nữa nhé <3");
+            }
+            if (incovers === 2) {
+                let partnerId = await (getPartner.getPartner(senderId));
+                sendMessage.sendAudio(partnerId, payload);
+            }
         })()
     }
     procImage(senderId, payload) {
