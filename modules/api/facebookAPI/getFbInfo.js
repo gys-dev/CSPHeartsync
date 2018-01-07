@@ -19,7 +19,8 @@ var getFbInfo = (senderId) => {
                 pic_id: pic_id,
                 _id: body.id + "",
                 favorite: "none",
-                inconversation: 0 //0 no, 1 pending, 2 yep
+                inconversation: 0, //0 no, 1 pending, 2 yep
+                pair_count:0
             };
             resolve(obj);
         })
