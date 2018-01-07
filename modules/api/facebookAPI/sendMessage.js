@@ -1,7 +1,7 @@
 var request = require('request');
 class sendMessage {
     constructor() {
-        this._token = "EAALBIgDENZB8BACVI8gHoHmRkNFYE2Cm4W1uwXV0Ywl60Id5mGg1ljJsUA0VKJMy6A0tGJtGJqA38eZAWtZA03g1XeLGHN3Um0Yfn4FcUeo3V5NCOZAbiCfwVpXpAzqd6RjZCUgNMUaWDs9JVvXwVraGkEhcQeiV2CRJFBwMg9AZDZD"
+        this._token = ""
     }
     sendBotMessage(senderId, title, content) {
         request({
