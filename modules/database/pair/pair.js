@@ -2,17 +2,23 @@ var mongodb = require('mongodb').MongoClient,
     url = 'mongodb://localhost:27017',
     sendMessage = require('../../api/facebookAPI/sendMessage'),
     pairr = require('../resUser/pairr'),
-    pair_log = require('../history'),
-    checkPairCount=require('../checkUser/checkPaircount');
+    pair_log = require('../history');
+/* Todo
+	fix user_pairing function to work in case of mongodb.insert being asycn
+*/
 var user_pair = (senderId, partnerId, collect, list) => {
     collect.deleteOne({
         _id: partnerId.toString()
     }, (err, obj) => {
+        console.log('bef');
         let paired = list.collection('paired');
         pairr.pairr(senderId)
             .then(a => {
                 pairr.pairr(partnerId)
                     .then(b => {
+                        // console.log('after');
+
+                        // console.log("User 1 : " + senderId.toString() + " ; User 2 : " + partnerId.toString() + "\n");
                         var objinsert = [{
                             id1: senderId.toString(),
                             id2: partnerId.toString()
@@ -23,19 +29,11 @@ var user_pair = (senderId, partnerId, collect, list) => {
                         }
                         ]
                         paired.insertMany(objinsert, (err, res) => {
-                            if (err) throw (err);          
-                            checkPairCount.checkPairCount(senderId).then(senderCount=>{
-                                checkPairCount.checkPairCount(partnerId).then(partnerCount=>{
-                                            list.collection('users').update({_id:senderId.toString()},{$set:{pair_count:senderCount+1}},(err,x)=>{
-                                                list.collection('users').update({_id:partnerId.toString()},{$set:{pair_count:partnerCount+1}},(err,y)=>{
-                                                    sendMessage.sendBotMessageWithPromise(senderId,"Đã có một người được kết nối với bạn","Chúc hai bạn nói chuyện vui vẻ nha").then(a=>{
-                                                      sendMessage.sendBotMessageWithPromise(partnerId, "Đã có một người được kết nối với bạn", "Chúc hai bạn nói chuyện vui vẻ nha").then(b=>{pair_log.pair_log(senderId,partnerId)})
-                                                })
-                                            })
-                                    })
-                                })
-                            })                
+                            if (err) throw (err);
+                            sendMessage.sendBotMessageWithPromise(senderId,"Đã có một người được kết nối với bạn","Chúc hai bạn nói chuyện vui vẻ nha").then(a=>{
+                                sendMessage.sendBotMessageWithPromise(partnerId, "Đã có một người được kết nối với bạn", "Chúc hai bạn nói chuyện vui vẻ nha").then(b=>{pair_log.pair_log(senderId,partnerId)})
 
+                            })
                         })
                     })
             })

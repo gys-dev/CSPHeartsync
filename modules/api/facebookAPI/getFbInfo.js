@@ -16,8 +16,7 @@ var getFbInfo = (senderId) => {
                 gender: body.gender,
                 _id: body.id + "",
                 favorite: "none",
-                inconversation: 0, //0 no, 1 pending, 2 yep
-                pair_count:0
+                inconversation: 0 //0 no, 1 pending, 2 yep
             };
             resolve(obj);
         })
