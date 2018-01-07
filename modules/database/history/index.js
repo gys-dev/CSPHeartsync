@@ -1,5 +1,6 @@
+require('dotenv').config()
 var mongodb = require('mongodb').MongoClient,
-    url = 'mongodb://localhost:27017',
+url = process.env.URL_DB,
     getName = require('../checkUser/getName');
     getAvatar = require('../checkUser/getAvatar');
 

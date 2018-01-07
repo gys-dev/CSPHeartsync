@@ -1,10 +1,11 @@
 var request = require('request');
+require('dotenv').config()
 var getFbInfo = (senderId) => {
     return new Promise((resolve, reject) => {
         request({
             url: 'https://graph.facebook.com/v2.11/' + senderId,
             qs: {
-                access_token: ""
+                access_token: process.env.PAGE_TOKEN || ""
             },
             method: "GET"
         }, (err, res, body) => {

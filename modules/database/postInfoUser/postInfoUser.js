@@ -1,5 +1,6 @@
-var MongoClient = require('mongodb').MongoClient,
-    url = 'mongodb://localhost:27017',
+require('dotenv').config()
+var mongodb = require('mongodb').MongoClient,
+url = process.env.URL_DB,
     getFbInfo = require('../../api/facebookAPI/getFbInfo');
 
 var postInfoUser = async(senderId) => {

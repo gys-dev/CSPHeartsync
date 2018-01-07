@@ -1,5 +1,6 @@
+require('dotenv').config()
 var mongodb = require('mongodb').MongoClient,
-    url = 'mongodb://localhost:27017',
+url = process.env.URL_DB,
     sendMessage = require('../../api/facebookAPI/sendMessage'),
     pairr = require('../resUser/pairr'),
     pair_log = require('../history');

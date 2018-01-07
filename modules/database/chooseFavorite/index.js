@@ -1,6 +1,8 @@
+require('dotenv').config()
 var mongodb = require('mongodb').MongoClient,
-    sendMessage = require('../../api/facebookAPI/sendMessage'),
-    url = 'mongodb://localhost:27017';
+url = process.env.URL_DB,
+   sendMessage = require('../../api/facebookAPI/sendMessage');
+
 
 var chooseFavorite = (senderId, gender) => {
     return new Promise((resolve, reject) => {

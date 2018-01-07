@@ -1,7 +1,8 @@
 var request = require('request');
+require('dotenv').config()
 class sendMessage {
     constructor() {
-        this._token = ""
+        this._token = process.env.PAGE_TOKEN || ""
     }
     sendBotMessage(senderId, title, content) {
         request({
